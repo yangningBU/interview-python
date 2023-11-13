@@ -12,13 +12,13 @@ def merge_intervals(schedule):
     for current_start, current_end in schedule:
         previous_start, previous_end = intervals[-1]
 
-        if current_start <= previous_end:
+        if previous_end >= current_start:
             intervals[-1] = (previous_start, max(current_end, previous_end))
         else:
             intervals.append((current_start, current_end))
     
     return intervals
 
-print(merge_intervals(test1), test1_out)
+print(merge_intervals(test1) == test1_out)
 print(merge_intervals(test2) == test2_out)
 print(merge_intervals(test3) == test3_out)
